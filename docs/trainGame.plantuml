@@ -1,0 +1,70 @@
+@startuml Train Game
+
+object TrainGame
+
+object User
+    object Driver
+        object name
+        object age
+        object gender
+        object birthdate
+        object Human
+        object Computer
+        object Passenger
+        object driverGoals
+            object forward
+            object stop
+            object turnTrain
+            object makeWhistle
+
+object Train
+    object mainWagon
+    object trainGoals
+        object accelerate
+        object brake
+        object whistle
+        object turn
+
+object Track
+    object lanes
+
+object Wagon
+    object color
+    object passengerWagon
+    object dimensions
+
+TrainGame *-- User
+TrainGame *-- Train
+TrainGame *-- Track
+
+User *-- name
+User *-- age
+User *-- gender
+User *-- birthdate
+User -right-> Train
+User <|-- Driver
+Driver <|-- Human
+Driver <|-- Computer
+User <|-- Passenger
+
+Driver o-- driverGoals
+driverGoals <|-- forward
+driverGoals <|-- stop
+driverGoals <|-- turnTrain
+driverGoals <|-- makeWhistle
+
+Train *-- Wagon
+Wagon *-- color
+Wagon *-- dimensions
+Wagon <|-- passengerWagon
+Train *-- mainWagon
+Train o-- trainGoals
+trainGoals <|-- accelerate
+trainGoals <|-- brake
+trainGoals <|-- whistle
+trainGoals <|-- turn
+
+Track -left-> Train
+Track *-- lanes
+
+@enduml
